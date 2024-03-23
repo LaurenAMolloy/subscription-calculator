@@ -1,0 +1,36 @@
+// Your JS code here
+// Select Your Elements
+var subTypeElement = document.querySelector("#subscription");
+var subDurationElement= document.querySelector("#months");
+var result = document.querySelector(".result");
+var subType = "basic";
+var subDuration = 1;
+
+//Create Change Event Listeners
+
+subTypeElement.addEventListener ("change",function (e) {
+    subType = e.target.value;
+    //console.log(subType);
+    //Call Your Function to Update the DOM
+    updateSubscriptionDiv();
+});
+
+subDurationElement.addEventListener ("change", function (e) {
+    subDuration = e.target.value;
+    //console.log(subduration);
+    //Call Your Function to Update the DOM
+    updateSubscriptionDiv();
+});
+
+//Use a Function to Calculate the Cost
+
+var updateSubscriptionDiv = function () {
+    var monthlyCost = 5; // for basic plan
+    if (subType === "standard") {
+      monthlyCost = 7;
+    } else if (subType === "premium") {
+      monthlyCost = 10;
+    }
+    var total = subDuration * monthlyCost;
+    result.innerText = `You have chosen a ${subDuration} month ${subType} plan for $${total}.`;
+  };
